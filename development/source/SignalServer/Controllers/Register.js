@@ -28,7 +28,7 @@ module.exports = function (socket, data) {
                         } else {
                             //OK
                             //Kiem tra bang tocken xem da co chua
-                            Token.findOne({ user_id: vUser._id })
+                            Token.findOne({ userId: vUser._id })
                                 .exec(function (err, vToken) {
                                     if (vToken) {//Da tim thay thi tra lai ma token
                                         socket.tokenId = vToken._id;
@@ -38,9 +38,10 @@ module.exports = function (socket, data) {
                                         // Tra lai ma token
                                         var tocken = new Token({
                                             user: vUser,
-                                            user_id: vUser._id,
+                                            userId: vUser._id,
+                                            userType:vUser.type,
                                             sta: 1,
-                                            socket_id: socket.id
+                                            socketId: socket.id
                                         }
                                         );
 
@@ -50,7 +51,7 @@ module.exports = function (socket, data) {
                                                 socket.emit('REGISTER', { 'err': 3, 'msg': 'Can not create token' });
                                             } else {
                                                 //Tim lai ban ghi de update
-                                                Token.findOne({ user_id: vUser._id })
+                                                Token.findOne({ userId: vUser._id })
                                                     .exec(function (err, newToken) {
                                                         if (newToken) {
                                                             socket.tokenId = newToken._id;

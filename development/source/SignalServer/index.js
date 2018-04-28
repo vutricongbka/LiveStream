@@ -9,7 +9,12 @@ var mongoose = require('mongoose');
 //Connect Database
 var conn = mongoose.connect('mongodb://localhost/SignalServer');
 //Get IO
-const io = require('socket.io')(3001);
+var app = require('express');
+var http = require('http').Server(app);
+const io = require('socket.io')(http, { 'pingInterval': 2000, 'pingTimeout': 5000 });
+http.listen(3001, function(){
+    console.log('listening on *:3001');
+  });
 //Lang nghe client ket noi den.
 io.on('connection', socket => {
     console.log(socket.id);
@@ -24,9 +29,12 @@ io.on('connection', socket => {
         register(socket, data);
     });
     // Xu ly su kien gui Offer
-    socket.on('OFFER_SDP', data => {
+    socket.on('OFFER_SDP', sdp => {
         // Xu ly su kien Offer
-
+        //Todo CongVT implement Check role
+        console.log('Co token gui len:' + socket.tokenId);// Log token
+        let offerSDP = require('./Controllers/OfferSDP.js');
+        offerSDP(io, socket, sdp);
     });
     // Xu ly su kien Answer
     socket.on('ANSWER_SDP', data => {

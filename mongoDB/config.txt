@@ -1,0 +1,5 @@
+systemLog:
+    destination: file
+    path: E:\NextDigi\LiveStream\mongoDB\mongod.log
+storage:
+    dbPath: E:\NextDigi\LiveStream\mongoDB\data

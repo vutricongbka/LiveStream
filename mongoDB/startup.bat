@@ -1,0 +1,1 @@
+mongod --config "E:\NextDigi\LiveStream\mongoDB\config.txt" 

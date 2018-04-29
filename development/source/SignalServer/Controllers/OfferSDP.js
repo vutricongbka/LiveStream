@@ -8,6 +8,7 @@ const uid = require('uid');
 
 module.exports = function (io, socket, sdp) {
     try {
+        
         //Lay thong tin Token gui
         // Kiem tra xem la cua ai
         console.log("Bat dau vao ham xu ly OfferSDP" + socket.tokenId);
@@ -59,8 +60,8 @@ module.exports = function (io, socket, sdp) {
                                                 } else {
                                                     // Da tao duoc call routing
                                                     // Gui cho Media Server
-                                                    console.log("Send offer to Media Server:" + mToken._id);
-                                                    io.to(mToken._id).emit('OFFER_SDP', { 'callRecord': callRecord, 'callRouting': callRouting, 'SDP': sdp });
+                                                    console.log("Send offer to Media Server:" + mToken.socketId);
+                                                    io.to(mToken.socketId).emit('OFFER_SDP', { 'callRecordId': callRecord.callId, 'callRoutingId': callRouting.callRoutingId,'socketId':vToken.socketId ,'sdp': sdp });
                                                 }
                                             });
 

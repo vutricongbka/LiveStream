@@ -1,0 +1,6 @@
+# Bo qua thu muc MongoDB
+mongoDB/
+#Bo qua cac thu muc cua thu vien Node
+development/source/Camera/node_modules/
+development/source/MediaServer/node_modules/
+development/source/SignalServer/node_modules/

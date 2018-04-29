@@ -39,7 +39,9 @@ io.on('connection', socket => {
     // Xu ly su kien Answer
     socket.on('ANSWER_SDP', data => {
         // Luong xu ly Anser
-
+        console.log('Nhan duoc tra loi:' + socket.tokenId);// Log token
+        let answerSDP = require('./Controllers/AnswerSDP.js');
+        answerSDP(io, socket, data);
     });
     // Xu ly Stop
     socket.on('STOP_MEDIA', data => {

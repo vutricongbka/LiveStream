@@ -66,6 +66,8 @@ var CallRecord = new Schema({
     callId: String,
     callingTokenId: Schema.Types.ObjectId,
     calledTokenId: Schema.Types.ObjectId,
+    callingSocketId: String,
+    calledSocketId: String,
     startDateTime: { type: Date, default: Date.now },
     endDateTime: Date,
     duration: Number,

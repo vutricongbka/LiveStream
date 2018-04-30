@@ -5,22 +5,22 @@ CallRecord = mongoose.model('CallRecord');
 CallRouting = mongoose.model('CallRouting');
 const uid = require('uid');
 
-
 module.exports = function (io, socket, data) {
     try {
-        //Lay thong tin Token gui
-        // Kiem tra xem la cua ai
-        console.log("Bat dau vao ham xu ly OfferSDP" + socket.tokenId);
+        // Ham xu ly Offer Candidate from Camera
+        //Todo CongVT can add them ham xac thuc truoc khi thuc thi
+        // Tim CallRecord de xac dinh dinh tuyen
         CallRecord.findOne({ callId: data.callId })
             .exec(function (err, vCallRecord) {
                 if (vCallRecord) {
                     // Tim duoc Call record
                     // Thuc hien gui ban tin cho Called
-                    console.log("Gui SDP Cho Media Server");
-                    io.to(vCallRecord.calledSocketId).emit('OFFER_SDP', data);
+                    console.log("Gui Candidate to called");
+                    io.to(vCallRecord.calledSocketId).emit('OFFER_CANDIDATE', data);
+
                 } else {
                     // Khong tim duoc Call record
-                    socket.emit('OFFER_SDP', { 'err': 'C1', 'msg': 'Khong tim duoc CallRecord', 'callId': data.callId });
+                    socket.emit('ANSWER_CANDIDATE', { 'err': 'C1', 'msg': 'Khong tim duoc CallRecord', 'callId': data.callId });
                 }
 
 
@@ -28,8 +28,7 @@ module.exports = function (io, socket, data) {
 
 
     } catch (e) {
-        console.log(e);
-    };
 
-
+        console.log('Co loi xay ra khi xu ly ham OfferCandidate:' + e);
+    }
 };

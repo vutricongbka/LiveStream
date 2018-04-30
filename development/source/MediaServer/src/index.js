@@ -5,8 +5,8 @@ const Peer = require('simple-peer');
 const openStream = require('./openStream');
 const playVideo = require('./playVideo');
 const io = require('socket.io-client');
-//const socket = io.connect('http://localhost:3001');
-const socket = io.connect('http://144.202.51.123:3001');
+const socket = io.connect('http://localhost:3001');
+//const socket = io.connect('http://144.202.51.123:3001');
 
 var token;
 // Lop MediaServer

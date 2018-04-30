@@ -2,23 +2,28 @@
 <html lang="en">
 
 <head>
-  <title>Camera</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CongVT WebRTC</title>
 </head>
 
 <body>
+    <h3 id="myOffer">My Offer: </h3>
+    <input type="text" placeholder="My Offer" id="txtMyOfferId">
+    <br />
+    <br />
+    <video id="selfView" width="300" controls></video>
+    <br />
+    <br />
+    <button id="btnStart">Call</button>
+    <br />
+    <br />
+    <video id="remoteView" width="300" controls></video>
+    <br />
+    <br />
 
-  <div class="container">
-    <h1>Welcome to Camera application</h1>
-    <h3 id="peer-id">My id: </h3>
-    <video id="localStream" width="300" controls></video>
     <br />
     <br />
-    <button id="btnCall" onclick="btnClick()">Call</button>
-  </div>
 
 </body>
-<script src='main.js'></script>
+<script src="main.js"></script>
 
 </html>

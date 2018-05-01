@@ -13,7 +13,7 @@ module.exports = function (io, socket, data) {
                 if (vCallRecord) {
                     // Tim duoc Call record
                     // Thuc hien gui ban tin cho Called
-                    console.log("Gui SDP Cho Media Server");
+                    console.log("Gui SDP Cho Camera");
                     io.to(vCallRecord.callingSocketId).emit('ANSWER_SDP', data);
                 } else {
                     // Khong tim duoc Call record

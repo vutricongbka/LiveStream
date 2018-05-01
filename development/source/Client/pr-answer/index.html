@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MediaServer application</title>
+  <title>Web RTC basic make a call</title>
+  <!-- Load the polyfill to switch-hit between Chrome and Firefox -->
   <style>
     video {
       border:5px solid black;
-      width:800px;
-      height:600px;
+      width:320px;
+      height:240px;
     }
   </style>
 </head>
 <body>
-  <video id="vid2" autoplay="true" muted="true"></video>
+  <video id="vid1" autoplay="true" muted="true"></video>
+  <video id="vid2" autoplay></video>
   <br>
   <button id="callButton">Call</button>
+  <button id="acceptButton">Accept</button>
   <button id="hangUpButton">Hang Up</button>
 </body>
 <script src="js/adapter-latest.js"></script>
-<script src="js/socket.io.js"></script>
 <script src="js/common.js"></script>
 <script src="js/main.js"></script>
 </html>

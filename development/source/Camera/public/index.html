@@ -1,29 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <title>CongVT WebRTC</title>
+  <title>Camera application</title>
+  <style>
+    video {
+      border:5px solid black;
+      width:800px;
+      height:600px;
+    }
+  </style>
 </head>
-
 <body>
-    <h3 id="myOffer">My Offer: </h3>
-    <input type="text" placeholder="My Offer" id="txtMyOfferId">
-    <br />
-    <br />
-    <video id="selfView" width="300" controls></video>
-    <br />
-    <br />
-    <button id="btnStart">Call</button>
-    <br />
-    <br />
-    <video id="remoteView" width="300" controls></video>
-    <br />
-    <br />
-
-    <br />
-    <br />
-
+  <video id="vid1" autoplay="true" muted="true"></video>
+  <br>
+  <button id="callButton">Call</button>
+  <button id="hangUpButton">Hang Up</button>
 </body>
-<script src="main.js"></script>
-
+<script src="js/adapter-latest.js"></script>
+<script src="js/socket.io.js"></script>
+<script src="js/common.js"></script>
+<script src="js/main.js"></script>
 </html>
+
